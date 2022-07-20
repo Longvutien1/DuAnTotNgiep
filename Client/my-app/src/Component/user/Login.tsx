@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from "react-redux";
-import { signIn, signUp } from "../../features/Slide/auth/authSlide";
+import { forgotPassword, signIn, signUp } from "../../features/Slide/auth/authSlide";
 import { message, Modal } from "antd";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { FacebookAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from 'firebase/auth'
@@ -38,9 +38,8 @@ const Login = (props: Props) => {
     console.log(userForm);
     try {
       const { payload } = await dispatch(signIn(userForm))
-      console.log(payload);
+      // console.log(payload.message);
       if (payload.message) {
-
         message.error(payload.message);
         // Modal.error({
         //   title: "Account is exist !",
@@ -69,6 +68,7 @@ const Login = (props: Props) => {
       alert("Error !!!")
     }
   }
+
   const handlerLoginFacebook = () => {
     const prodider = new FacebookAuthProvider();
     signInWithPopup(auth, prodider).then((result) => {
@@ -89,6 +89,7 @@ const Login = (props: Props) => {
 
     });
   }
+  
   const handlerLoginGoogle = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider).then((result) => {
@@ -121,6 +122,24 @@ const Login = (props: Props) => {
     }
 
   })
+
+  // const forgotPassword2 = () => {
+  //   Modal.info ({
+  //     title:"Forgot Password",
+  //     content: (
+  //       <form>
+  //         <label htmlFor="">Your Email</label>
+  //         <input className="p-2  w-full border"  type="email" placeholder="Basic usage" />
+  //         {/* <p>some messages...some messages...</p> */}
+  //       </form>
+  //     ),
+  //     onOk() {
+  //       dispatch(forgotPassword({email:"tllong20002@gmail.com"}))
+  //     },
+  //   })
+   
+  // }
+
   return (
 
     <div className="grid grid-cols-12 gap-8 m-auto">
@@ -150,7 +169,7 @@ const Login = (props: Props) => {
               </div>
 
               <p className="my-6 text-center">
-                <a href="#">Forgot your password?</a>
+                <Link to={'/forgotPassword'}>Forgot your password?</Link>
               </p>
 
               <div className="text-center">

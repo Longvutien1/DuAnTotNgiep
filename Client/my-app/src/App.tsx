@@ -40,6 +40,8 @@ import ListUser from './features/Admin/Auth/listUser';
 import AddUser from './features/Admin/Auth/AddUser';
 // import Edit from './Admin/categories/Edit';
 import Store from './pages/Store';
+import ForgotPassword from './Component/user/ForgotPassword';
+import NewPassword from './Component/user/NewPassword';
 
 function App() {
   return (
@@ -78,8 +80,10 @@ function App() {
 
         <Route path='/login' element={<Login />}> </Route>
         <Route path='/register' element={<SignUp />}></Route>
+        <Route path='/forgotPassword' element={<ForgotPassword />}></Route>
+        <Route path='/newPassword/:id' element={<NewPassword />}></Route>
         <Route path='/welcome' element={<Welcome />}></Route>
-
+        
       </Routes>
 
 

@@ -32,4 +32,12 @@ export const removeUser = (id:any) => {
     return instance.delete(url);
 } 
 
+export const forgotPass = (email:any) => {
+    const url = `/sendMail`;
+    return instance.post(url, email);
+} 
 
+export const newPassword = (user:any) => {
+    const url = `/newPassword/${user._id}`;
+    return instance.put(url, user);
+} 

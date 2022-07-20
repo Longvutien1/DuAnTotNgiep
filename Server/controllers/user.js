@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import User from "../models/user"
-
+import bcrypt from 'bcrypt'
 
 export const signIn = async (req, res) => {
     const{ email, password} = req.body
@@ -11,7 +11,10 @@ export const signIn = async (req, res) => {
                 message:"User không tồn tại"
             })
         }
-        if (!user.authenticate(password)) {
+        console.log(user.password);
+        const match = await bcrypt.compare(password, user.password);
+        console.log(match);
+        if (match == false) {
             return res.json({
                 message:"Mật khẩu không đúng"
             })
@@ -35,13 +38,20 @@ export const signIn = async (req, res) => {
 export const signUp = async (req, res) => {
     const {email, username, password} = req.body;
     try {
+        // check user exist
         const exisUser = await User.findOne({email}).exec();
         if (exisUser) {
             return res.json({ message:"User đã tồn tại"})
         }
-        // console.log("đã tới đây");
-        const user = await  User({email, password, username}).save()
-        console.log(user);
+
+          // mã hóa pass
+          const salt = await bcrypt.genSalt(10);
+          const passwordHash = await bcrypt.hash(password, salt);
+          
+        const user = await  User({email, password:passwordHash, username}).save();
+
+        // console.log(passwordHash);
+        // console.log(user.password);
         res.json({
             user:{
                 _id:user._id,
@@ -91,6 +101,25 @@ export const userById = async (req, res, next, id) => {
     }
 }
 
+export const userByEmail = async (req, res, next) => {
+        const {email} = req.body
+    try {
+        const userByemail = await User.findOne({email:email}).exec();
+        if (!userByemail) {
+            res.status(400).json({
+                message: "Không tìm thấy user"
+            })
+        }
+
+        req.profile = userByemail;
+        req.profile.password = undefined;
+        console.log(req.profile);
+        next();
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 export const updateUser = async (request, response) => {
     try {
@@ -111,4 +140,19 @@ export const deleteUser = async (request, response) => {
         response.status(400).json({message:"Không thể xóa"});
     }
    
+}
+
+export const changePassword = async (req, res, next) => {
+    try {
+        const {id} = req.params;
+        const salt = await bcrypt.genSalt(10);
+        const password = await bcrypt.hash(req.body.password, salt);
+        const userNewPassword = await User.findByIdAndUpdate({_id: id}, {password: password}, {new:true})
+
+        res.json(userNewPassword);
+        console.log(salt);
+        // console.log(id);
+    } catch (error) {
+        
+    }
 }

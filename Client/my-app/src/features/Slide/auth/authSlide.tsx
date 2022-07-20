@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addUser, editUser, getListUser, login, register, removeUser } from "../../../api/user";
+import { addUser, editUser, forgotPass, getListUser, login, newPassword, register, removeUser } from "../../../api/user";
 import { UserType } from "../../../types";
 
 
@@ -57,6 +57,21 @@ export const signUp:any = createAsyncThunk(
     }
 )
 
+export const forgotPassword:any = createAsyncThunk(
+    "user/forgotPassword",
+    async (email:any) => {
+        const {data} = await forgotPass(email);
+        return data
+    }
+)
+
+export const newPass:any = createAsyncThunk(
+    "user/changePassword",
+    async (user:any) => {
+        const {data} = await newPassword(user);
+        return data
+    }
+)
 
 
 
@@ -102,7 +117,14 @@ const authSlide = createSlice({
         builer.addCase(signIn.fulfilled,  (state:any, action:any) => {
             state.isAuthticated = true;
         })
-
+        builer.addCase(forgotPassword.fulfilled,  (state:any, action:any) => {
+           console.log(action.payload);
+           
+        })
+        builer.addCase(newPass.fulfilled,  (state:any, action:any) => {
+            // state.value = action.payload 
+            
+         })
         
     }
 })
