@@ -1,81 +1,150 @@
-import { Breadcrumb, Menu } from 'antd'
-import Layout, { Content, Header } from 'antd/lib/layout/layout'
-import Sider from 'antd/lib/layout/Sider'
+import { Breadcrumb, Layout, Menu, Avatar, Badge, Dropdown, Space } from 'antd'
 import SubMenu from 'antd/lib/menu/SubMenu'
-import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
-// import Header from '../../Component/Header'
-import { UserOutlined, CommentOutlined, DollarOutlined, LaptopOutlined } from '@ant-design/icons';
+import React, { useEffect, useState } from 'react'
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
+import { UserOutlined, CommentOutlined, DollarOutlined, LaptopOutlined, FolderFilled, BellOutlined, ReadOutlined } from '@ant-design/icons';
+
 
 const AdminLayout = () => {
-  return (
-    <Layout style={{ width: "100%", height:"100vh" }}>
-    <Header className="" >
-        <div className="logo" style={{float:"left",  width: "120px",height: "31px"}}>
-            <NavLink aria-current="page" className="logo active" to="/"> Logo </NavLink>
-        </div>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1"><NavLink to='/admin'>Admin</NavLink></Menu.Item>
-            <Menu.Item key="2"><NavLink to='/'>Home</NavLink></Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
-        </Menu>
-    </Header>
+    const [collapsed, setCollapsed] = useState(false);
+    const { Header, Content, Footer, Sider } = Layout;
+    let location = useLocation();
+    const [current, setCurrent] = useState(location.pathname)
 
-    <Layout>
-        <Sider width={200} className="site-layout-background">
-            <Menu mode="inline" defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} style={{ height: '100%', borderRight: 0 }} >
-
-                <SubMenu key="sub1" icon={<LaptopOutlined />} title="Product">
-                    <Menu.Item key="1"><NavLink to='/admin/product'>List Product</NavLink></Menu.Item>
-                    <Menu.Item key="2"><NavLink to='/admin/product/add'>Add Product</NavLink></Menu.Item>
-                </SubMenu>
-
-                <SubMenu key="sub2" icon={<DollarOutlined />} title="Category">
-                    <Menu.Item key="9"><NavLink to='/admin/category'>List Category</NavLink></Menu.Item>
-                    <Menu.Item key="10"><NavLink to='/admin/category/add'>Add Category</NavLink></Menu.Item>
-                </SubMenu>
-
-                <SubMenu key="sub3" icon={<UserOutlined />} title="User">
-                    <Menu.Item key="3"><NavLink to='/admin/user'>List User</NavLink></Menu.Item>
-                    <Menu.Item key="4"><NavLink to='/admin/user/add'>Add User</NavLink></Menu.Item>
-                </SubMenu>
-
-                <SubMenu key="sub4" icon={<CommentOutlined />} title="Order">
-                    <Menu.Item key="5"><NavLink to='/admin/order'>List Order</NavLink></Menu.Item>
-                </SubMenu>
-
-                <SubMenu key="sub5" icon={<DollarOutlined />} title="Salary">
-                    <Menu.Item key="7">List Salary</Menu.Item>
-                    <Menu.Item key="8">Detail Salary</Menu.Item>
-                </SubMenu>
+    const notification = (
+        <Menu
+            items={[
+                {
+                    key: '1',
+                    icon: <BellOutlined />,
+                    label: (
+                        <span>
+                            Profile
+                        </span>
+                    ),
+                },
+                {
+                    key: '2',
+                    label: (
+                        <span>
+                            Log Out
+                        </span>
+                    ),
+                    icon: <BellOutlined />,
+                    danger: true,
 
 
+                }
+            ]}
+        />
+    );
 
-            </Menu>
-        </Sider>
-        <Layout style={{ padding: '0 24px 24px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-                <Breadcrumb.Item>Home</Breadcrumb.Item>
-                <Breadcrumb.Item>List</Breadcrumb.Item>
-                <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
-            <Content
-                className="site-layout-background"
-                style={{
-                    padding: 24,
-                    margin: 0,
-                    minHeight: 280,
-                    background:"#fff"
-                }}
-            >
-                <aside ><Outlet /></aside>
-            </Content>
+    const menu = (
+        <Menu
+            items={[
+                {
+                    key: '1',
+                    icon: <BellOutlined />,
+                    label: (
+                        <span>
+                            Profile
+                        </span>
+                    ),
+                },
+                {
+                    key: '2',
+                    label: (
+                        <span>
+                            Log Out
+                        </span>
+                    ),
+                    icon: <BellOutlined />,
+                    danger: true,
+
+
+                }
+            ]}
+        />
+    );
+
+    function handleClick(e: any) {
+        setCurrent(e.key);
+    }
+
+    useEffect(() => {
+        if (location) {
+            if (current !== location.pathname) {
+                setCurrent(location.pathname);
+            }
+        }
+    }, [location, current])
+
+
+    return (
+        <Layout style={{ width: "100%", minHeight: '100vh' }}>
+            <Sider collapsible collapsed={collapsed} onCollapse={value => setCollapsed(value)}>
+                <div className="logo flex justify-center py-2" >
+                    <NavLink aria-current="page" className="logo active" to="/"> Logo </NavLink>
+                </div>
+
+
+
+                <Menu
+                    theme="dark"
+                    mode="inline"
+                    onClick={handleClick}
+                    selectedKeys={[current]}
+                >
+                    <SubMenu key="sub1" icon={<FolderFilled />} title="Category">
+                        <Menu.Item key="/admin/category"><NavLink to='/admin/category'>List Category</NavLink></Menu.Item>
+                        <Menu.Item key="/admin/category/add"><NavLink to='/admin/category/add'>Add Category</NavLink></Menu.Item>
+                    </SubMenu>
+                    <SubMenu key="sub2" icon={<ReadOutlined />} title="Quiz">
+                        <Menu.Item key="/admin/quiz"><NavLink to='/admin/quiz'>List Quiz</NavLink></Menu.Item>
+                        <Menu.Item key="/admin/quiz/add"><NavLink to='/admin/quiz/add'>Add Quiz</NavLink></Menu.Item>
+                    </SubMenu>
+
+                </Menu>
+            </Sider>
+
+
+
+            <Layout className="site-layout" >
+                <Header className="site-layout-background" style={{ padding: 0 }} >
+
+                    <div className="flex justify-end">
+                        <div className="px-4">
+                            <Dropdown overlay={notification} trigger={['click']} placement="bottomRight">
+                                <Badge dot>
+                                    <BellOutlined style={{ fontSize: 24, color: 'white' }} />
+                                </Badge>
+                            </Dropdown>
+                        </div>
+                        <div className="px-4">
+
+                            <Dropdown overlay={menu} trigger={['click']}>
+                                <Avatar size="large" icon={<UserOutlined />} />
+                            </Dropdown>
+                        </div>
+                    </div>
+
+                </Header>
+
+                <Content
+                    className="site-layout-background"
+                    style={{
+                        margin: '16px',
+                        minHeight: 280,
+                        background: "#fff"
+                    }}
+                >
+                    <aside style={{ padding: 24 }} ><Outlet /></aside>
+                </Content>
+            </Layout>
+
+
         </Layout>
-    </Layout>
-
-    {/* <main>Main</main> */}
-</Layout>
-  )
+    )
 }
 
 export default AdminLayout

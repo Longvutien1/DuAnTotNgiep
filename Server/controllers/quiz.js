@@ -1,3 +1,4 @@
+import AnswerQuiz from "../models/answerQuiz"
 import Quiz from "../models/quiz"
 
 export const listQuiz = async (req,res)=>{
@@ -12,7 +13,8 @@ export const listQuiz = async (req,res)=>{
 export const detailQuiz = async (req,res)=>{
     try {
         const quiz = await Quiz.findOne({_id: req.params.id }).exec()
-        res.json(quiz)
+        const answerQuiz = await AnswerQuiz.find({quiz}).populate("quiz").exec()
+        res.json({quiz,answerQuiz})
     } catch (error) {
         res.status(400).json({message:"Không tìm thấy Data"})
     }

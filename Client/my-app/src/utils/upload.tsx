@@ -4,8 +4,11 @@ import axios from "axios";
 
 export const uploadImage = async (imgPost:any) => {
 
-    const CLOULDINARY_PRESET = "longchanhthon";
-    const CLOULDINARY_API_URL = "https://api.cloudinary.com/v1_1/chanh-thon/image/upload";
+    // const CLOUDINARY_PRESET = "longchanhthon";
+    // const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/chanh-thon/image/upload";
+
+    const CLOUDINARY_PRESET = "ypn4yccr";
+    const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/vintph16172/image/upload"
 
     let imgLink = "";
 
@@ -15,9 +18,9 @@ export const uploadImage = async (imgPost:any) => {
     if (file) {
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("upload_preset",CLOULDINARY_PRESET);
+        formData.append("upload_preset",CLOUDINARY_PRESET);
         // call api để upload ảnh lên
-        const {data} = await axios.post(CLOULDINARY_API_URL, formData, {
+        const {data} = await axios.post(CLOUDINARY_API_URL, formData, {
             headers:{
                 "Content-Type": "application/form-data",
             },

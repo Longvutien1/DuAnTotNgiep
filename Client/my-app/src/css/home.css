@@ -147,6 +147,7 @@
     @apply bg-[#EAF2F8]
 } */
 
+
 .distance__course{
     @apply w-10/12 m-auto pt-[50px] pb-[50px] grid grid-cols-4 gap-4 text-center
 }

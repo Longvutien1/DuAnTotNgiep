@@ -38,9 +38,18 @@ app.use("/api",checkAuth, routeAuth);
 app.use("/", homeRouter )
 app.use("/api",checkAuth, routeCategory);
 app.use("/api", routerSpeak )
+app.use("/api", routerQuiz)
+app.use("/api", routerListenWrite)
+
+app.use("/api", routerAnswerSpeak)
+app.use("/api", routerAnswerQuiz)
+app.use("/api", routerAnswerListenWrite)
 
 
-app.use("/api", routerSpeak )
+app.use("/api", routerUserSpeak)
+app.use("/api", routerUserQuiz)
+app.use("/api", routerUserListenWrite)
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("DB Connected"))
