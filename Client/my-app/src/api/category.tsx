@@ -1,4 +1,4 @@
-import { CategoryType } from "../types";
+import { CategoryType } from "../types/category";
 import instance from "./instance";
 
 

@@ -1,7 +1,7 @@
 export type CategoryType = {
     _id?: string ,
-    title: String, 
-    detail: String,
+    title: string, 
+    detail: string,
     image: string,
     
 }

@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import toas from 'toastr';
 import { changeImage, uploadImage } from '../../../utils/upload';
-import { addCategorySlide } from '../../Slide/category/CategorySlide';
+import { addCategorySlide } from '../../../features/Slide/category/CategorySlide';
 
 const layout = {
   labelCol: { span: 2 },

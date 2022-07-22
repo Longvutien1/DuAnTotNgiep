@@ -1,15 +1,17 @@
 import React from 'react';
-import  './css/home.css'; 
-import  './css/footer.css'; 
-import  './css/header.css'; 
-import  './css/welcome.css'; 
-import  './css/learning.css'; 
-import  './css/detailLearning.css'; 
-import  './css/signin.css'; 
-import  './css/signup.css'; 
+
+import './css/home.css';
+import './css/footer.css';
+import './css/header.css';
+import './css/welcome.css';
+import './css/learning.css';
+import './css/detailLearning.css';
+import './css/signin.css';
+import './css/signup.css';
 import './css/quiz.css';
 import './css/speaking.css';
 import './css/listen.css';
+
 import "toastr/build/toastr.min.css";
 
 // import './App.css';
@@ -31,13 +33,20 @@ import ExeQuiz from './pages/ExeQuiz';
 import ExeSpeak from './pages/ExeSpeak';
 import ExeWriteAndListen from './pages/ExeWriteAndListen';
 import Login from './Component/user/Login';
+import ListQuiz from './pages/admin/quiz/ListQuiz';
+import FormQuiz from './pages/admin/quiz/FormQuiz';
+
+
 // import Add from './Admin/categories/Add';
 import toastr from "toastr";
-import Add from './features/Admin/categories/Add';
-import Edit from './features/Admin/categories/Edit';
-import List from './features/Admin/categories/List';
+
+import Add from './pages/admin/categories/Add';
+import Edit from './pages/admin/categories/Edit';
+import List from './pages/admin/categories/List';
+import AdminDashboard from './pages/admin/AdminDashboard';
 import ListUser from './features/Admin/Auth/listUser';
 import AddUser from './features/Admin/Auth/AddUser';
+
 // import Edit from './Admin/categories/Edit';
 import Store from './pages/Store';
 import ForgotPassword from './Component/user/ForgotPassword';
@@ -47,7 +56,7 @@ function App() {
   return (
     <div >
       <Routes>
-        
+
         <Route path='/' element={<WebsiteLayout />}>
           <Route index element={<Home />} />
           <Route path='learning' element={<Learning/>} />
@@ -63,21 +72,30 @@ function App() {
 
 
         <Route path='admin' element={<AdminLayout />}>
-          <Route index element={<Navigate to="category" />} />
+          <Route index element={<Navigate to="dashboard" />} />
+          <Route path='dashboard' element={<AdminDashboard />} />
+
           <Route path="category" >
             <Route index element={<List />} />
             <Route path='add' element={<Add />} />
             <Route path='edit/:id' element={<Edit />} />
           </Route>
-          
+
           <Route path="user" >
             <Route index element={<ListUser />} />
             <Route path='add' element={<AddUser />} />
             <Route path='edit/:id' element={<Edit />} />
           </Route>
 
-        </Route>
 
+          <Route path="quiz" >
+            <Route index element={<ListQuiz />} />
+            <Route path='add' element={<FormQuiz />} />
+            <Route path=':id/edit' element={<FormQuiz />} />
+          </Route>
+
+
+        </Route>
         <Route path='/login' element={<Login />}> </Route>
         <Route path='/register' element={<SignUp />}></Route>
         <Route path='/forgotPassword' element={<ForgotPassword />}></Route>

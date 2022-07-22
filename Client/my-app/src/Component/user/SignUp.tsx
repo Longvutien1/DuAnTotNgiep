@@ -2,7 +2,7 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
-import { UserType } from "../../types";
+// import { UserType } from "../../types";
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from "react-redux";

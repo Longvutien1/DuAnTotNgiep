@@ -10,7 +10,7 @@ const answerQuizSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    is_correct:{
+    isCorrect:{
         type: Number,
         required: true
     }

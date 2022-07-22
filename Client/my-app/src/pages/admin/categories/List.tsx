@@ -2,7 +2,7 @@ import { Button, Modal, Space, Table } from 'antd'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { getCategoryList, removeCate } from '../../Slide/category/CategorySlide'
+import { getCategoryList, removeCate } from '../../../features/Slide/category/CategorySlide'
 // import { getCategoryList, removeCate } from '../../features/category/CategorySlide'
 // import { CategoryType } from '../../types'
 

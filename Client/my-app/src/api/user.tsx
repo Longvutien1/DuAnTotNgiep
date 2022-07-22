@@ -1,4 +1,4 @@
-import { UserType } from "../types";
+import { UserType } from "../types/category";
 import instance from "./instance";
 
 

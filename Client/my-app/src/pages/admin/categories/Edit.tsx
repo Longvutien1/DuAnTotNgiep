@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import toas from 'toastr';
 import { changeImage, uploadImage } from '../../../utils/upload';
-import { editdCategorySlide, getCateById, getCategoryList } from '../../Slide/category/CategorySlide';
+import { editdCategorySlide, getCateById, getCategoryList } from '../../../features/Slide/category/CategorySlide';
 
 const layout = {
     labelCol: { span: 2 },
@@ -30,7 +30,9 @@ const Edit = () => {
     const dispath = useDispatch();
     const navigate = useNavigate();
     const { id } = useParams();
+
     const [form] = Form.useForm();
+
     console.log(category);
    
     useEffect(() => {
@@ -101,7 +103,7 @@ const Edit = () => {
                 <Form.Item name={'image'} label="Image" valuePropName="src">
                         <img  className="form-control" id="img-preview"  style={{ width: "100px" }} />
                 </Form.Item>
-
+                
                 <Form.Item name={'detail'}  label="Detail" rules={[{ required: true }]}>
                     <Input.TextArea />
                 </Form.Item>

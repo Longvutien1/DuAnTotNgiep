@@ -4,10 +4,10 @@ import { addQuiz, deleteQuiz, detailQuiz, editQuiz, listQuiz } from "../controll
 
 const router = express.Router()
 
-router.get("/quiz", listQuiz )
-router.get("/quiz/:id", detailQuiz )
-router.post("/quiz", addQuiz )
-router.put("/quiz/:id", editQuiz )
-router.delete("/quiz/:id", deleteQuiz )
+router.get("/quizs", listQuiz )
+router.get("/quizs/:id", detailQuiz )
+router.post("/quizs", addQuiz )
+router.put("/quizs/:id", editQuiz )
+router.delete("/quizs/:id", deleteQuiz )
 
 export default router
