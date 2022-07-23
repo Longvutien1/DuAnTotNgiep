@@ -11,9 +11,9 @@ const Home = () => {
     const navigate = useNavigate();
     const startLearning = () => {
 
-           const existUser = localStorage.getItem("user") ? localStorage.getItem("user") : ""; 
+        const existUser = localStorage.getItem("user") ? localStorage.getItem("user") : "";
         //    console.log(localStorage.getItem("user"));
-           
+
         if (!existUser) {
             navigate('/login')
         } else {
@@ -28,7 +28,7 @@ const Home = () => {
                 {/* end header */}
                 <section className="banner">
                     <div className="image">
-                        <a ><img src="../image/image 1.png" className='home__img__banner' /></a>
+                        <a ><img src="https://i.pinimg.com/originals/5b/83/ef/5b83ef5ba73ca499f556bce1859dd9ab.gif" className='home__img__banner' /></a>
                     </div>
                     <div className="start">
                         <p className="start-title">Cách học ngôn ngữ miễn phí, vui nhộn và hiệu quả</p>
@@ -138,11 +138,63 @@ const Home = () => {
                     </div>
                 </section>
 
+                {/* teacher  */}
+                <section className='box__teacher'>
+                    <h2 className="title__lecturers">
+                        Giảng  Viên Của Vogue
+                    </h2>
+                    <div className="list__teacher">
+                        <div className="item__teacher">
+                            <div className="">
+                                <img className='img__teacher' src="https://i.pinimg.com/564x/40/13/74/4013749a8693c2ac0e3a8a3326a99240.jpg" alt="" />
+
+                            </div>
+                            <h3 className="name__teacher">
+                                Bùi Hồng Hạnh
+                            </h3>
+                            <p>
+                                Thạc sỹ Giáo Dục
+                                & Quản Trị Kinh Doanh từ Đại Học StanFord
+                            </p>
+                        </div>
+                        <div className="item__teacher">
+                            <div className="">
+                                <img className='img__teacher' src="https://i.pinimg.com/564x/58/44/1a/58441a96ff4480dbae3779ec75ef87a4.jpg" alt="" />
+
+                            </div>
+                            <h3 className="name__teacher">
+                                Bùi Hồng Hạnh
+                            </h3>
+                            <p>
+                                Thạc sỹ Giáo Dục
+                                & Quản Trị Kinh Doanh từ Đại Học StanFord
+                            </p>
+                        </div>
+                        <div className="item__teacher">
+                            <div className="">
+                                <img className='img__teacher' src="https://i.pinimg.com/564x/cb/72/2c/cb722cc4a9a425e604c911957f9b2f93.jpg" alt="" />
+
+                            </div>
+                            <h3 className="name__teacher">
+                                Bùi Hồng Hạnh
+                            </h3>
+                            <p>
+                                Thạc sỹ Giáo Dục
+                                & Quản Trị Kinh Doanh từ Đại Học StanFord
+                            </p>
+                        </div>
+                    </div>
+                </section>
 
                 {/* buy course  */}
 
                 <section className='box__main__course'>
+                <h2 className="title__course__main">
+                            ĐĂNG KÝ KHÓA HỌC
+                        </h2>
                     <div className='distance__course'>
+
+                        
                         <div className="box__course">
                             <h2 className="title__course__sale">
                                 GÓI ƯU ĐÃI NHẤT
@@ -300,7 +352,7 @@ const Home = () => {
                                         <label htmlFor=""> Gói 6 tháng</label>
                                         <input type="checkbox" name="" id="" />
                                     </div>
-                                    <div className='item__Check__box'> 
+                                    <div className='item__Check__box'>
                                         <label htmlFor=""> Gói 3 tháng</label>
                                         <input type="checkbox" name="" id="" />
                                     </div>
