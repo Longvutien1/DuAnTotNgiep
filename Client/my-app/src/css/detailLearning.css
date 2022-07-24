@@ -18,6 +18,7 @@
   @apply my-auto space-x-4;
 }
 
+
 .header__learning_box .logo #menu-btn {
   @apply md:hidden font-bold;
 }
