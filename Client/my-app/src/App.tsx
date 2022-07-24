@@ -1,3 +1,4 @@
+
 import React from 'react';
 import  './css/home.css'; 
 import  './css/footer.css'; 
@@ -21,9 +22,11 @@ import AdminLayout from './pages/layouts/AdminLayout';
 import Welcome from './pages/Welcome';
 import Learning from './pages/Learning';
 import DetailLearning from './pages/DetailLearning';
-import Contact from './pages/Contact';
+// import Contact from './pages/Contact';
 import FileUser from './pages/FileUser';
-import User from './pages/User';
+// import User from './pages/User';
+
+
 // import Login from './Component/user/Login';
 import SignUp from './Component/user/SignUp';
 import ThongKe from './Component/user/ThongKe';
@@ -33,13 +36,20 @@ import ExeWriteAndListen from './pages/ExeWriteAndListen';
 import Login from './Component/user/Login';
 // import Add from './Admin/categories/Add';
 import toastr from "toastr";
-import Add from './features/Admin/categories/Add';
-import Edit from './features/Admin/categories/Edit';
-import List from './features/Admin/categories/List';
+// import Add from './features/Admin/categories/Add';
+// import Edit from './features/Admin/categories/Edit';
+// import List from './features/Admin/categories/List';
 import ListUser from './features/Admin/Auth/listUser';
 import AddUser from './features/Admin/Auth/AddUser';
 // import Edit from './Admin/categories/Edit';
 import Store from './pages/Store';
+import ForgotPassword from './Component/user/ForgotPassword';
+import NewPassword from './Component/user/NewPassword'; 
+import List from './pages/admin/categories/List';
+import Add from './pages/admin/categories/Add';
+import Edit from './pages/admin/categories/Edit';
+import User from './pages/user/User';
+import Contact from './pages/contact/Contact';
 
 function App() {
   return (
@@ -78,8 +88,10 @@ function App() {
 
         <Route path='/login' element={<Login />}> </Route>
         <Route path='/register' element={<SignUp />}></Route>
+        <Route path='/forgotPassword' element={<ForgotPassword />}></Route>
+        <Route path='/newPassword/:email' element={<NewPassword />}></Route>
         <Route path='/welcome' element={<Welcome />}></Route>
-
+        
       </Routes>
 
 

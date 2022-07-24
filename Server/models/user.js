@@ -60,14 +60,14 @@ userSchema.methods = {
     }
 }
 
-userSchema.pre("save", function (next) {
-    try {
-        this.password = this.encryPassword(this.password);
-        next();
-    } catch (error) {
-        console.log(error);
-    }
-})
+// userSchema.pre("save", function (next) {
+//     try {
+//         this.password = this.encryPassword(this.password);
+//         next();
+//     } catch (error) {
+//         console.log(error);
+//     }
+// })
 
 
 export default mongoose.model('User',userSchema);

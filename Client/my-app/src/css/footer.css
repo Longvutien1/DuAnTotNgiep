@@ -1,9 +1,10 @@
 
+
 .footer{
     @apply bg-[#512E5F]
 }
 .footer .container{
-    @apply w-10/12 m-auto text-white py-[20px] 
+    @apply w-10/12 m-auto text-white py-[50px] 
 }   
 .footer .container .title{
     @apply  text-center md:text-left 
@@ -15,7 +16,7 @@
     @apply sm:grid sm:grid-cols-2 lg:grid lg:grid-cols-5 gap-8 text-center sm:text-left
 }
 .footer .container .row .col .col-name{
-    @apply font-bold text-[18px]  pt-[20px]  
+    @apply font-bold text-[24px]  pt-[60px]  
 }
 
 .footer .container .row .col ul li {

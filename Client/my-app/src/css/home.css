@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -90,10 +91,7 @@
 /* end vougue */
 
 .box__info__home{
-    height: 750px;
-    background-image: url('https://i.pinimg.com/originals/98/26/58/98265888efe0ae9fa4764f7fa7c2e761.gif');
-    background-repeat: no-repeat;
-    background-size: 100% 750px;
+    background-color: #EAF2F8;
 }
 
 .reason {
@@ -146,46 +144,13 @@
 /* end study */
 
 
-/* teacher */
-
-.box__teacher{
-    @apply w-10/12 m-auto
-}
-.title__lecturers{
-    @apply text-center text-[32px]	font-bold	text-3xl	
-}
-.list__teacher{
-    @apply grid grid-cols-3 gap-4
-}
-.item__teacher{
-    text-align: center;
-}
-.img__teacher{
-    @apply rounded-full mt-[78px]
-}
-.img__teacher{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 200px;
-}
-.name__teacher{
-    @apply text-base	font-bold	mt-[22px]
-}
-.item__teacher p{
-    @apply text-base p-[30px]
-}
-
 /* .box__main__course {
     @apply bg-[#EAF2F8]
 } */
 
+
 .distance__course{
     @apply w-10/12 m-auto pt-[50px] pb-[50px] grid grid-cols-4 gap-4 text-center
-}
-
-.title__course__main{
-    @apply text-center text-[32px] mt-[50px]	font-bold	text-3xl	
 }
 .box__course{
    border: 2px solid red;
@@ -236,7 +201,7 @@
 
 .price__sale-off__course{
     position: absolute;
-    top: -1px;
+    top: 0;
     left: -1px;
     width: 50px;
     height: 52px;
@@ -259,7 +224,7 @@
 }
 .price__sale__year{
     position: absolute;
-    top: -1px;
+    top: 0;
     left: -1px;
     width: 50px;
     height: 52px;

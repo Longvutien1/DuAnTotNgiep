@@ -14,10 +14,6 @@ const quizSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    correctAnswer:{
-        type: String,
-        required: true
-    },
     timeLimit:{
         type: String,
         required: true

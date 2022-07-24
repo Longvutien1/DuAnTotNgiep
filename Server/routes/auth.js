@@ -1,5 +1,5 @@
 import express  from "express"
-import { deleteUser, getUser, signIn, signUp, updateUser, userDetail } from "../controllers/user";
+import { changePassword, deleteUser, getUser, signIn, signUp, updateUser, userDetail } from "../controllers/user";
 
 const routeAuth = express.Router();
 
@@ -9,5 +9,6 @@ routeAuth.get('/users/:id',userDetail);
 routeAuth.get('/users',getUser);
 routeAuth.put('/users/:id',updateUser);
 routeAuth.delete('/users/:id',deleteUser);
+
 
 export default routeAuth;
