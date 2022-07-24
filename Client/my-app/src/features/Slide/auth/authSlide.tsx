@@ -1,7 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { addUser, editUser, getListUser, login, register, removeUser } from "../../../api/user";
-import { UserType } from "../../../types";
+// <<<<<<< HEAD
+import { addUser, changeOTP, editUser, forgotPass, getListUser, login, newPassword, register, removeUser } from "../../../api/user";
+// import { UserType } from "../../../types";
 
+// // =======
+// import { addUser, editUser, getListUser, login, register, removeUser } from "../../../api/user";
+import { UserType } from "../../../types/category";
+// >>>>>>> 1248fae67eaebcb4006257ef25c579c82afbef47
 
 export const getUserList:any = createAsyncThunk(
     "user/getListUser",
@@ -57,6 +62,29 @@ export const signUp:any = createAsyncThunk(
     }
 )
 
+export const forgotPassword:any = createAsyncThunk(
+    "user/forgotPassword",
+    async (email:any) => {
+        const {data} = await forgotPass(email);
+        return data
+    }
+)
+
+export const newPass:any = createAsyncThunk(
+    "user/changePassword",
+    async (user:any) => {
+        const {data} = await newPassword(user);
+        return data
+    }
+)
+export const changeOtp:any = createAsyncThunk(
+    "user/changeOtp",
+    async (user:any) => {
+        const {data} = await changeOTP(user);
+        return data
+    }
+)
+
 
 
 
@@ -65,6 +93,7 @@ const authSlide = createSlice({
    
     initialState:{
         value:[],
+        otp:[],
         isAuthticated: false
     },
     reducers:{
@@ -72,7 +101,9 @@ const authSlide = createSlice({
         logout(){
             // state.value =[];
             localStorage.removeItem("user");
-        }
+        },
+
+    
     },
     extraReducers: (builer) => {
         builer.addCase(getUserList.fulfilled, (state, action) => {
@@ -102,7 +133,19 @@ const authSlide = createSlice({
         builer.addCase(signIn.fulfilled,  (state:any, action:any) => {
             state.isAuthticated = true;
         })
-
+        builer.addCase(forgotPassword.fulfilled,  (state:any, action:any) => {
+           console.log(action.payload);
+           
+        })
+        builer.addCase(newPass.fulfilled,  (state:any, action:any) => {
+            // state.value = action.payload 
+            
+        })
+        builer.addCase(changeOtp.fulfilled,  (state:any, action:any) => {
+            // state.otp = action.payload 
+            
+         })
+       
         
     }
 })

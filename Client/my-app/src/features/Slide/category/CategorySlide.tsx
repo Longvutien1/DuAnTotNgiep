@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { addCategory, editCategory, getCategoryById, listCategory, removeCategory } from "../../../api/category";
-import { CategoryType } from "../../../types";
+import { CategoryType } from "../../../types/category";
 // import { addCategory, editCategory, getCategoryById, listCategory, removeCategory } from "../../api/category";
 // import { CategoryType } from "../../types";
 
