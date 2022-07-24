@@ -10,6 +10,7 @@ const User = (props: Props) => {
   return (
     <>
       <Header />
+      
       <div className="container">
         <BannerUser />
         <ThongKe />

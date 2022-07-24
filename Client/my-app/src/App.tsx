@@ -51,6 +51,7 @@ import Edit from './pages/admin/categories/Edit';
 import User from './pages/user/User';
 import Contact from './pages/contact/Contact';
 
+
 function App() {
   return (
     <div >
@@ -101,3 +102,5 @@ function App() {
 }
 
 export default App;
+
+
