@@ -1,12 +1,16 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+
 import { message, Modal } from 'antd';
 import React, { useState } from 'react'
+
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 
+
 import {  changeOtp, forgotPassword, signIn } from '../../features/Slide/auth/authSlide';
+
 
 const fromSchema = yup.object().shape({
     email: yup.string()
@@ -18,6 +22,7 @@ const fromSchema = yup.object().shape({
   
   
   type FormInputs = {
+
     otp: string | number,
     email: string,
   }
@@ -27,11 +32,13 @@ const ForgotPassword = () => {
     const { register, handleSubmit, formState } = useForm<FormInputs>(validation);
     const [otp, setotp] = useState();
     const [change, setchange] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { errors } = formState;
 
   const onSubmit: SubmitHandler<FormInputs> = async (userForm: any) => {
+
    
     try {
       
@@ -60,6 +67,7 @@ const ForgotPassword = () => {
         
       }
   
+
     } catch (error) {
       alert("Error !!!")
     }
@@ -79,6 +87,7 @@ const ForgotPassword = () => {
 
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="m " >
+
                 <input className="p-2 text-white" {...register('email', { required: true })} type="email" placeholder="Nhập Email của bạn" />
                 <div className="text-red-500  text-center px-4">{errors.email?.message}</div>
               </div>

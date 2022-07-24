@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+
 import User from "../models/user";
 import bcrypt from "bcrypt";
 
@@ -36,6 +37,7 @@ export const signIn = async (req, res) => {
 };
 
 export const signUp = async (req, res) => {
+
   const { email, username, password } = req.body;
   try {
     // check user exist
@@ -109,6 +111,7 @@ export const userByEmail = async (req, res, next) => {
       });
     }
 
+
     req.profile = userByemail;
     req.profile.password = undefined;
     console.log(req.profile);
@@ -132,6 +135,7 @@ export const updateUser = async (request, response) => {
 };
 
 export const deleteUser = async (request, response) => {
+
   try {
     const user = await User.findOneAndDelete({ _id: request.params.id });
     response.json(user);

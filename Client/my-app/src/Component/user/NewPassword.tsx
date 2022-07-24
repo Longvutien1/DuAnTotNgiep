@@ -11,6 +11,7 @@ import {  newPass  } from '../../features/Slide/auth/authSlide';
 const fromSchema = yup.object().shape({
 
     password: yup.string()
+
       .required("Không được để trống")
       .min(6, 'Mật khẩu phải lớn hơn 6 kí tự'),
     confirmPassword: yup.string()
@@ -29,6 +30,7 @@ const NewPassword = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { errors } = formState;
+
     const { email } = useParams();
     const onSubmit: SubmitHandler<FormInputs> = async (userForm: any) => {
       console.log(userForm);
@@ -79,7 +81,6 @@ const NewPassword = () => {
 
 
             <form onSubmit={handleSubmit(onSubmit)}>
-            
               <div className="m " >
                 <input className="p-2 text-white" {...register('password', { required: true })} type="password" placeholder="Password" />
                 <div className="text-red-500  text-center px-4">{errors.password?.message}</div>
