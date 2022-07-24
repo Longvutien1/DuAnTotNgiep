@@ -25,6 +25,8 @@ import routerEmail from './routes/sendMail';
 //-----------------USER-ANSWER------------------------ 
 
 
+const { Auth, LoginCredentials  } = require("two-step-auth");
+
 const app = express();
 const path = require("path");
 
@@ -42,17 +44,6 @@ app.use("/", homeRouter )
 app.use("/api",checkAuth, routeCategory);
 app.use("/api", routerSpeak )
 app.use("/api", routerEmail )
-app.use("/api", routerQuiz)
-app.use("/api", routerListenWrite)
-
-app.use("/api", routerAnswerSpeak)
-app.use("/api", routerAnswerQuiz)
-app.use("/api", routerAnswerListenWrite)
-
-
-app.use("/api", routerUserSpeak)
-app.use("/api", routerUserQuiz)
-app.use("/api", routerUserListenWrite)
 
 mongoose
   .connect(process.env.MONGO_URI)

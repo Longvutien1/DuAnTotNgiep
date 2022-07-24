@@ -1,3 +1,4 @@
+
 /* eslint-disable jsx-a11y/alt-text */
 import { Button, Form, Input } from 'antd';
 import React, { useEffect } from 'react'
@@ -30,9 +31,7 @@ const Edit = () => {
     const dispath = useDispatch();
     const navigate = useNavigate();
     const { id } = useParams();
-
     const [form] = Form.useForm();
-
     console.log(category);
    
     useEffect(() => {
@@ -103,7 +102,7 @@ const Edit = () => {
                 <Form.Item name={'image'} label="Image" valuePropName="src">
                         <img  className="form-control" id="img-preview"  style={{ width: "100px" }} />
                 </Form.Item>
-                
+
                 <Form.Item name={'detail'}  label="Detail" rules={[{ required: true }]}>
                     <Input.TextArea />
                 </Form.Item>

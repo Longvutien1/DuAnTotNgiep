@@ -1,10 +1,11 @@
+
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
-// import { UserType } from "../../types";
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../features/Slide/auth/authSlide";
 import { Modal } from "antd";
@@ -13,29 +14,28 @@ import { Modal } from "antd";
 type Props = {};
 
 const fromSchema = yup.object().shape({
-  username: yup.string()
+  username: yup
+    .string()
     .required("Username is required")
     .min(6, "Username length should be at least 20 characters"),
-  email: yup.string()
-    .required("Email is required")
-    .email("It not Email"),
-  password: yup.string()
+  email: yup.string().required("Email is required").email("It not Email"),
+  password: yup
+    .string()
     .required("Password is required")
-    .min(6, 'Password length should be at least 4 characters'),
-  confirmPassword: yup.string()
+    .min(6, "Password length should be at least 4 characters"),
+  confirmPassword: yup
+    .string()
     .required("Password is required")
-    .oneOf([yup.ref('password')], 'Passwords must and should match'),
-})
-const validation = { resolver: yupResolver(fromSchema) }
-
+    .oneOf([yup.ref("password")], "Passwords must and should match"),
+});
+const validation = { resolver: yupResolver(fromSchema) };
 
 type FormInputs = {
-  username: string,
-  email: string,
-  password: string | number,
-  confirmPassword?: string | number,
-}
-
+  username: string;
+  email: string;
+  password: string | number;
+  confirmPassword?: string | number;
+};
 
 const SignUp = (props: Props) => {
   const { register, handleSubmit, formState } = useForm<FormInputs>(validation);
@@ -49,37 +49,32 @@ const SignUp = (props: Props) => {
       const user = {
         username: userForm.username,
         email: userForm.email,
-        password: userForm.password
-      }
+        password: userForm.password,
+      };
       // console.log(user.confirmPassword)
-      const { payload } = await dispatch(signUp(user))
+      const { payload } = await dispatch(signUp(user));
       console.log(payload);
       if (payload.message) {
         Modal.error({
           title: "Account is exist !",
           onOk: () => {
             // navigate("/login")
-          }
-        })
+          },
+        });
       } else {
         Modal.success({
           title: "Register successfully",
           onOk: () => {
-            navigate("/login")
-          }
-        })
+            navigate("/login");
+          },
+        });
       }
-
-
-
     } catch (error) {
-      alert("Username is exist")
+      alert("Username is exist");
     }
-  }
-
+  };
 
   return (
-
     <div className="grid grid-cols-12 gap-8 m-auto">
       <div className="signin__form col-span-12 w-10/12 m-auto py-12 mt-8 flex justify-center">
         <div className="signin__main__right w-full my-24">
@@ -88,12 +83,13 @@ const SignUp = (props: Props) => {
             To keep connected with us please login with your personal info
           </p>
           <div className="text-center">
-            <NavLink to={"/login"} className="button px-4 border-1 rounded">Sign in</NavLink>
+            <NavLink to={"/login"} className="button px-4 border-1 rounded">
+              Sign in
+            </NavLink>
           </div>
         </div>
         <div className="signin__main__left  w-full ">
           <div className="text-center mr-24">
-
             <h1 className="text-3xl font-bold">Signin To Website </h1>
             <div className="signin__main__right__login__google text-center my-6">
               <i className="fa-brands fa-facebook" />
@@ -103,22 +99,50 @@ const SignUp = (props: Props) => {
             <p className="text-center">or user email acount</p>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="m">
-                <input className="px-4 text-white" {...register('username')} type="text" placeholder="Name" />
-                <div className="text-red-500 float-left text-left px-4">{errors.username?.message}</div>
+                <input
+                  className="px-4 text-white"
+                  {...register("username")}
+                  type="text"
+                  placeholder="Name"
+                />
+                <div className="text-red-500 float-left text-left px-4">
+                  {errors.username?.message}
+                </div>
               </div>
               <div className="m">
-                <input className="px-4 text-white" {...register("email")} type="email" placeholder="Email" />
-                <div className="text-red-500 float-left text-left px-4">{errors.email?.message}</div>
+                <input
+                  className="px-4 text-white"
+                  {...register("email")}
+                  type="email"
+                  placeholder="Email"
+                />
+                <div className="text-red-500 float-left text-left px-4">
+                  {errors.email?.message}
+                </div>
               </div>
 
               <div>
-                <input className="px-4 text-white" {...register("password")} type="password" placeholder="Password" />
-                <div className="text-red-500 float-left text-left px-4">{errors.password?.message}</div>
+                <input
+                  className="px-4 text-white"
+                  {...register("password")}
+                  type="password"
+                  placeholder="Password"
+                />
+                <div className="text-red-500 float-left text-left px-4">
+                  {errors.password?.message}
+                </div>
               </div>
 
               <div>
-                <input className="px-4 text-white" {...register("confirmPassword")} type="password" placeholder="Confirm password" />
-                <div className="text-red-500 float-left text-left px-4">{errors.confirmPassword?.message}</div>
+                <input
+                  className="px-4 text-white"
+                  {...register("confirmPassword")}
+                  type="password"
+                  placeholder="Confirm password"
+                />
+                <div className="text-red-500 float-left text-left px-4">
+                  {errors.confirmPassword?.message}
+                </div>
               </div>
 
               <p className="my-6 text-center">
@@ -126,16 +150,15 @@ const SignUp = (props: Props) => {
               </p>
 
               <div className="text-center">
-                <button className="button px-4 text-white border-1 rounded">Sign up</button>
+                <button className="button px-4 text-white border-1 rounded">
+                  Sign up
+                </button>
               </div>
-
             </form>
           </div>
         </div>
-
       </div>
     </div>
-
   );
 };
 

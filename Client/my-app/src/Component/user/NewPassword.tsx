@@ -11,10 +11,11 @@ import {  newPass  } from '../../features/Slide/auth/authSlide';
 const fromSchema = yup.object().shape({
 
     password: yup.string()
-      .required("Password is required")
+
+      .required("Không được để trống")
       .min(6, 'Mật khẩu phải lớn hơn 6 kí tự'),
     confirmPassword: yup.string()
-      .required("Password is required")
+      .required("Không được để trống")
       .oneOf([yup.ref('password')], 'Mật khẩu không trùng khớp'),
   })
   const validation = { resolver: yupResolver(fromSchema) }
@@ -29,28 +30,35 @@ const NewPassword = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { errors } = formState;
-    const { id } = useParams();
+
+    const { email } = useParams();
     const onSubmit: SubmitHandler<FormInputs> = async (userForm: any) => {
       console.log(userForm);
+
       try {
+       
         const { payload } = await dispatch(newPass({
-            _id: id,
+            // _id: id,
+            
+            email:email,
             password: userForm.password,
-           
+            
           }))
 
-          console.log(payload);
-        if (payload) {
-          
-           message.success(payload)
-          navigate("/login")
+        console.log(payload);
+        if (payload.message) {
+          // errors.otp?.message = "mã otp không đúng";
+          message.warning(payload.message)
+        
+        }else{
+          message.success("Đổi mật khẩu thành công !")
+          // navigate("/login")
           // Modal.error({
           //   title: "Account is exist !",
           //   onOk: () => {
-          //     // navigate("/login")
+              navigate("/login")
           //   }
-          // })
-        
+          // }) 
         }
   
   

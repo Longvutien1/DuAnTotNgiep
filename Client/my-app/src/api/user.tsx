@@ -1,3 +1,5 @@
+
+// import { UserType } from "../types";
 import { UserType } from "../types/category";
 import instance from "./instance";
 
@@ -38,6 +40,13 @@ export const forgotPass = (email:any) => {
 } 
 
 export const newPassword = (user:any) => {
-    const url = `/newPassword/${user._id}`;
+    const url = `/newPassword`;
     return instance.put(url, user);
+} 
+
+export const changeOTP = (user:any) => {
+    console.log(user);
+    
+    const url = `/changeOTP`;
+    return instance.post(url, user);
 } 

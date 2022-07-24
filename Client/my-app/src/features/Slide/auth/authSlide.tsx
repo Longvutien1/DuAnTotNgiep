@@ -1,6 +1,7 @@
+
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // <<<<<<< HEAD
-import { addUser, editUser, forgotPass, getListUser, login, newPassword, register, removeUser } from "../../../api/user";
+import { addUser, changeOTP, editUser, forgotPass, getListUser, login, newPassword, register, removeUser } from "../../../api/user";
 // import { UserType } from "../../../types";
 
 // // =======
@@ -77,6 +78,14 @@ export const newPass:any = createAsyncThunk(
         return data
     }
 )
+export const changeOtp:any = createAsyncThunk(
+    "user/changeOtp",
+    async (user:any) => {
+        const {data} = await changeOTP(user);
+        return data
+    }
+)
+
 
 
 
@@ -85,6 +94,7 @@ const authSlide = createSlice({
    
     initialState:{
         value:[],
+        otp:[],
         isAuthticated: false
     },
     reducers:{
@@ -92,7 +102,9 @@ const authSlide = createSlice({
         logout(){
             // state.value =[];
             localStorage.removeItem("user");
-        }
+        },
+
+    
     },
     extraReducers: (builer) => {
         builer.addCase(getUserList.fulfilled, (state, action) => {
@@ -129,7 +141,12 @@ const authSlide = createSlice({
         builer.addCase(newPass.fulfilled,  (state:any, action:any) => {
             // state.value = action.payload 
             
+        })
+        builer.addCase(changeOtp.fulfilled,  (state:any, action:any) => {
+            // state.otp = action.payload 
+            
          })
+       
         
     }
 })
