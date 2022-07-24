@@ -21,12 +21,16 @@ import routerAnswerListenWrite from './routes/answerListenWrite';
 import routerUserSpeak from './routes/userSpeak';
 import routerUserQuiz from './routes/userQuiz';
 import routerUserListenWrite from './routes/userListenWrite';
+import routerEmail from './routes/sendMail';
 //-----------------USER-ANSWER------------------------ 
 
-
+const { Auth, LoginCredentials  } = require("two-step-auth");
 
 const app = express();
 const path = require("path");
+
+const nodemailer = require("nodemailer")
+
 
 app.use(morgan("tiny"));
 app.use(express.json());
@@ -38,17 +42,8 @@ app.use("/api",checkAuth, routeAuth);
 app.use("/", homeRouter )
 app.use("/api",checkAuth, routeCategory);
 app.use("/api", routerSpeak )
-app.use("/api", routerQuiz)
-app.use("/api", routerListenWrite)
+app.use("/api", routerEmail )
 
-app.use("/api", routerAnswerSpeak)
-app.use("/api", routerAnswerQuiz)
-app.use("/api", routerAnswerListenWrite)
-
-
-app.use("/api", routerUserSpeak)
-app.use("/api", routerUserQuiz)
-app.use("/api", routerUserListenWrite)
 
 mongoose
   .connect(process.env.MONGO_URI)
