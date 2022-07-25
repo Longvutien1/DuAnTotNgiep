@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+/* <<<<<<< HEAD */
 
 .box__signup{
     background-image: url('https://i.pinimg.com/originals/a7/12/3a/a7123a124ba35c74c421e1678e2bb677.gif');
@@ -45,45 +45,4 @@ input::placeholder{
 @media (min-width: 640px) { }
 @media (min-width: 768px) { }
 @media (min-width: 1024px) { }
-=======
-
-.signin__form .signin__main__left input{
-    background-color: #512E5F;
-    border-radius: 5px;
-    margin-top: 24px;
-    width: 478px;
-    height: 50px;
-}
-
-input::placeholder{
-    color: white;
-}
-
-.signin__form{
-    background-color: #FCFCFC;
-    border-radius: 5px;
-    width: 1200px;
-    height: 600px;
-}
-
-.signin__form .button{
-    background-color: #512E5F;
-    border-radius: 5px;
-    color: #fff;
-    padding: 10px 30px;
-    width: 200px;
-}
-
-.signin__main__left i {
-    font-size: 28px;
-    margin-left: 10px;
-}
-
-.signin__main__right .signin__main__right__text{
-    padding: 10px 150px 10px 150px;
-}
-@media (min-width: 640px) { }
-@media (min-width: 768px) { }
-@media (min-width: 1024px) { }
->>>>>>> be163c00799ac771d176171283bca04588d90832
 @media (min-width: 1280px) {  }

@@ -14,11 +14,11 @@ type Props = {};
 
 const fromSchema = yup.object().shape({
   email: yup.string()
-    .required("Email is required")
-    .email("It not Email"),
+    .required("Email hông được để trống")
+    .email("Nó không phải email"),
   password: yup.string()
-    .required("Password is required")
-    .min(6, 'Password length should be at least 4 characters'),
+    .required("Mật khẩu không được để trống")
+    .min(6, 'Mật khẩu không được nhỏ hơn 6 kí tự'),
 
 })
 const validation = { resolver: yupResolver(fromSchema) }
@@ -90,7 +90,7 @@ const Login = (props: Props) => {
 
     });
   }
-  
+
   const handlerLoginGoogle = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider).then((result) => {
@@ -124,74 +124,54 @@ const Login = (props: Props) => {
 
   })
 
-  // const forgotPassword2 = () => {
-  //   Modal.info ({
-  //     title:"Forgot Password",
-  //     content: (
-  //       <form>
-  //         <label htmlFor="">Your Email</label>
-  //         <input className="p-2  w-full border"  type="email" placeholder="Basic usage" />
-  //         {/* <p>some messages...some messages...</p> */}
-  //       </form>
-  //     ),
-  //     onOk() {
-  //       dispatch(forgotPassword({email:"tllong20002@gmail.com"}))
-  //     },
-  //   })
-   
-  // }
-
   return (
 
-    <div className="grid grid-cols-12 gap-8 m-auto">
-      <div className="signin__form col-span-12 w-10/12 m-auto py-12 mt-8 flex justify-center">
+    <div className="box__sigin">
+      <div className="signin__form ">
         <div className="signin__main__left  w-full ">
           <div className="text-center ml-24">
-
-
-            <h1 className="text-3xl font-bold">Signin To Website </h1>
+            <h1 className="text-3xl font-bold">Đăng nhập</h1>
             <div className="signin__main__right__login__google text-center my-6">
               <button onClick={() => handlerLoginFacebook()}><i className="fa-brands fa-facebook" /></button>
               <i className="fa-brands fa-twitter" />
               <button onClick={() => handlerLoginGoogle()}><i className="fa-solid fa-g" /></button>
             </div>
-            <p className="text-center">or user email acount</p>
+            <p className="text-center">Đăng nhập bằng email của bạn</p>
 
 
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="m">
-                <input className="p-2 text-white" {...register('email', { required: true })} type="email" placeholder="Email" />
+                <input className=" text-white" {...register('email', { required: true })} type="email" placeholder="Email" />
                 <div className="text-red-500 float-left text-left px-4">{errors.email?.message}</div>
               </div>
 
               <div>
-                <input className="p-2 text-white" {...register('password', { required: true })} type="password" placeholder="password" />
+                <input className=" text-white" {...register('password', { required: true })} type="password" placeholder="Mật khẩu" />
                 <div className="text-red-500 float-left text-left px-4">{errors.password?.message}</div>
               </div>
 
               <p className="my-6 text-center">
-                <Link to={'/forgotPassword'}>Forgot your password?</Link>
+              <Link to={'/forgotPassword'}>Quên mật khẩu ?</Link>
               </p>
 
               <div className="text-center">
-                <button className="button p-2 text-white border-1 rounded">Sign in</button>
+                <button className="button p-2 text-white border-1 rounded">Đăng nhập</button>
               </div>
             </form>
           </div>
 
         </div>
         <div className="signin__main__right w-full my-24">
-          <h3 className="text-2xl font-bold text-center">Hello Friend !</h3>
+          <h3 className="text-2xl font-bold text-center">Xin chào bạn !</h3>
           <p className="signin__main__right__text text-center my-8">
-            Enter your personal details start journey with us
+          Nhập thông tin cá nhân của bạn để bắt đầu hành trình với chúng tôi
           </p>
           <div className="text-center">
-            <NavLink to={"/register"} className="button p-2 border-1 rounded">Sign Up</NavLink>
+            <NavLink to={"/register"} className="button p-2 border-1 rounded">Đăng kí</NavLink>
           </div>
         </div>
       </div>
     </div>
-
   );
 };
 

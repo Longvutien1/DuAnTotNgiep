@@ -75,21 +75,20 @@ const SignUp = (props: Props) => {
   };
 
   return (
-    <div className="grid grid-cols-12 gap-8 m-auto">
-      <div className="signin__form col-span-12 w-10/12 m-auto py-12 mt-8 flex justify-center">
+    <div className="box__signup ">
+      <div className="signin__form col-span-12 w-10/12 m-auto  flex justify-center">
         <div className="signin__main__right w-full my-24">
           <h3 className="text-2xl font-bold text-center">Welcome back!</h3>
           <p className="signin__main__right__text text-center my-8 ">
             To keep connected with us please login with your personal info
           </p>
           <div className="text-center">
-            <NavLink to={"/login"} className="button px-4 border-1 rounded">
-              Sign in
-            </NavLink>
+            <NavLink to={"/login"} className="button px-4 border-1 rounded">Sign in</NavLink>
           </div>
         </div>
         <div className="signin__main__left  w-full ">
           <div className="text-center mr-24">
+
             <h1 className="text-3xl font-bold">Signin To Website </h1>
             <div className="signin__main__right__login__google text-center my-6">
               <i className="fa-brands fa-facebook" />
@@ -99,61 +98,32 @@ const SignUp = (props: Props) => {
             <p className="text-center">or user email acount</p>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="m">
-                <input
-                  className="px-4 text-white"
-                  {...register("username")}
-                  type="text"
-                  placeholder="Name"
-                />
-                <div className="text-red-500 float-left text-left px-4">
-                  {errors.username?.message}
-                </div>
+                <input className="px-4 text-white" {...register('username')} type="text" placeholder="Name" />
+                <div className="text-red-500 float-left text-left px-4">{errors.username?.message}</div>
               </div>
               <div className="m">
-                <input
-                  className="px-4 text-white"
-                  {...register("email")}
-                  type="email"
-                  placeholder="Email"
-                />
-                <div className="text-red-500 float-left text-left px-4">
-                  {errors.email?.message}
-                </div>
+                <input className="px-4 text-white" {...register("email")} type="email" placeholder="Email" />
+                <div className="text-red-500 float-left text-left px-4">{errors.email?.message}</div>
               </div>
 
               <div>
-                <input
-                  className="px-4 text-white"
-                  {...register("password")}
-                  type="password"
-                  placeholder="Password"
-                />
-                <div className="text-red-500 float-left text-left px-4">
-                  {errors.password?.message}
-                </div>
+                <input className="px-4 text-white" {...register("password")} type="password" placeholder="Password" />
+                <div className="text-red-500 float-left text-left px-4">{errors.password?.message}</div>
               </div>
 
               <div>
-                <input
-                  className="px-4 text-white"
-                  {...register("confirmPassword")}
-                  type="password"
-                  placeholder="Confirm password"
-                />
-                <div className="text-red-500 float-left text-left px-4">
-                  {errors.confirmPassword?.message}
-                </div>
+                <input className="px-4 text-white" {...register("confirmPassword")} type="password" placeholder="Confirm password" />
+                <div className="text-red-500 float-left text-left px-4">{errors.confirmPassword?.message}</div>
               </div>
 
               <p className="my-6 text-center">
-                <a href="#">Forgot your password?</a>
+
               </p>
 
               <div className="text-center">
-                <button className="button px-4 text-white border-1 rounded">
-                  Sign up
-                </button>
+                <button className="button px-4 text-white border-1 rounded">Sign up</button>
               </div>
+
             </form>
           </div>
         </div>
